@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import kodlamaIo.hrms.business.abstracts.CandidateService;
+import kodlamaIo.hrms.core.utilities.results.DataResult;
+import kodlamaIo.hrms.core.utilities.results.Result;
 import kodlamaIo.hrms.entities.concretes.Candidate;
 
 @RestController  //sen controllersın.restfull çalışacaksında android de ıos da senden iletişimde bulunabilir.
@@ -24,7 +28,12 @@ public class CandidatesContoller {
 	}
 	
 	@GetMapping("/getall")	//...../getall isteğinde bulunulursa burası çalışacak
-	public List<Candidate> getAll(){
+	public DataResult<List<Candidate>> getAll(){
 		return this.candidateService.getAll();
+	}
+	
+	@PostMapping("/add")
+	public Result add(@RequestBody Candidate candidate) {
+		return this.candidateService.add(candidate);
 	}
 }
