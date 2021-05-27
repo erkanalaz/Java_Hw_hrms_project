@@ -4,9 +4,10 @@ import java.util.List;
 
 import kodlamaIo.hrms.core.utilities.results.DataResult;
 import kodlamaIo.hrms.core.utilities.results.Result;
-import kodlamaIo.hrms.entities.concretes.Job;
+import kodlamaIo.hrms.entities.concretes.Employer;
 
-public interface JobService {
-	DataResult<List<Job>> getAll();
-	Result add(Job job);
+public interface EmployerService {
+	DataResult<List<Employer>> getEmployers();
+
+    Result addEmployer(Employer employer);
 }
